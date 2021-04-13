@@ -36,7 +36,9 @@ namespace SaveDecoder
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string saveData = File.ReadAllText(allSaves[SaveSelector.SelectedIndex]);
-            JSONNode node = JSONNode.LoadFromBinaryFile(Path.Combine(allSaves[SaveSelector.SelectedIndex], "newItems.json"));
+            var File = Path.Combine(allSaves[SaveSelector.SelectedIndex], "newItems.yrtlsv");
+            saveLocation.Text = File;
+            JSONNode node = JSONNode.LoadFromBinaryFile(File);
             SaveText.Text = PrettyJson(node.ToString());
         }
 
@@ -46,7 +48,7 @@ namespace SaveDecoder
             allSaves = Directory.GetDirectories(pathToSaves).ToList<string>();
             foreach(string save in allSaves.ToList())
             {
-                if (File.Exists(Path.Combine(save, "newItems.json")))
+                if (File.Exists(Path.Combine(save, "newItems.yrtlsv")))
                 {
                     string tempSaveName = save.Substring(pathToSaves.Length + 1);
                     SaveSelector.Items.Add(tempSaveName);
@@ -75,7 +77,7 @@ namespace SaveDecoder
         private void saveButton_Click(object sender, EventArgs e)
         {
             JSONNode node = JSON.Parse(SaveText.Text);
-            node.SaveToBinaryFile(Path.Combine(allSaves[SaveSelector.SelectedIndex], "newItems.json"));
+            node.SaveToBinaryFile(Path.Combine(allSaves[SaveSelector.SelectedIndex], "newItems.yrtlsv"));
             SavedTextStuff();
         }
 
@@ -116,6 +118,25 @@ namespace SaveDecoder
         void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = Path.GetFullPath($"{Environment.ExpandEnvironmentVariables("%APPDATA%")}\\..\\LocalLow\\Bezbro Games\\SCP Labrat\\saves");
+            openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            var File = openFileDialog1.FileName;
+            saveLocation.Text = File;
+            JSONNode node = JSONNode.LoadFromBinaryFile(File);
+            SaveText.Text = PrettyJson(node.ToString());
         }
     }
 }

@@ -37,6 +37,9 @@ namespace SaveDecoder
             this.label1 = new System.Windows.Forms.Label();
             this.saveLocation = new System.Windows.Forms.TextBox();
             this.SavedText1 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.PathLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SaveSelector
@@ -90,9 +93,9 @@ namespace SaveDecoder
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(22, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 15);
+            this.label1.Size = new System.Drawing.Size(81, 15);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Path To Saves:";
+            this.label1.Text = "Path To Save:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // saveLocation
@@ -118,12 +121,37 @@ namespace SaveDecoder
             this.SavedText1.TabIndex = 9;
             this.SavedText1.Text = "Saved...";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(164, 53);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // PathLabel
+            // 
+            this.PathLabel.AutoSize = true;
+            this.PathLabel.Location = new System.Drawing.Point(245, 57);
+            this.PathLabel.Name = "PathLabel";
+            this.PathLabel.Size = new System.Drawing.Size(0, 15);
+            this.PathLabel.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(626, 596);
+            this.Controls.Add(this.PathLabel);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.SavedText1);
             this.Controls.Add(this.saveLocation);
             this.Controls.Add(this.label1);
@@ -150,6 +178,9 @@ namespace SaveDecoder
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox saveLocation;
         private System.Windows.Forms.Label SavedText1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label PathLabel;
     }
 }
 
