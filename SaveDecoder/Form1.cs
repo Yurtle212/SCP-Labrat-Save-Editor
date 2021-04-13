@@ -128,6 +128,7 @@ namespace SaveDecoder
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = Path.GetFullPath($"{Environment.ExpandEnvironmentVariables("%APPDATA%")}\\..\\LocalLow\\Bezbro Games\\SCP Labrat\\saves");
+            openFileDialog1.Filter = "Yurtle Saves|*.yrtlsv";
             openFileDialog1.ShowDialog();
         }
 
