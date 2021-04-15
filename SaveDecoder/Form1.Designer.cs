@@ -111,6 +111,7 @@ namespace SaveDecoder
             this.saveLocation.TabIndex = 7;
             this.saveLocation.TabStop = false;
             this.saveLocation.Text = "SavePath";
+            this.saveLocation.TextChanged += new System.EventHandler(this.saveLocation_TextChanged);
             // 
             // SavedText1
             // 

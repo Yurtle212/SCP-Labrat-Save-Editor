@@ -77,7 +77,7 @@ namespace SaveDecoder
         private void saveButton_Click(object sender, EventArgs e)
         {
             JSONNode node = JSON.Parse(SaveText.Text);
-            node.SaveToBinaryFile(Path.Combine(allSaves[SaveSelector.SelectedIndex], "newItems.yrtlsv"));
+            node.SaveToBinaryFile(saveLocation.Text);
             SavedTextStuff();
         }
 
@@ -138,6 +138,11 @@ namespace SaveDecoder
             saveLocation.Text = File;
             JSONNode node = JSONNode.LoadFromBinaryFile(File);
             SaveText.Text = PrettyJson(node.ToString());
+        }
+
+        private void saveLocation_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
